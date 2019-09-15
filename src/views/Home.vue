@@ -1,18 +1,41 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-09-15 13:13:03
+ * @LastEditTime: 2019-09-15 13:34:17
+ * @LastEditors: Please set LastEditors
+ -->
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+		<Nav v-if="navOpen" :NavActiveIndex="activeIndex" @fromNavVal="fromNavValfn"></Nav>
+		<div v-else>折叠</div>
+		<router-view/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+	import Nav from './Nav.vue'
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
+	name: "home",
+	components:{
+		Nav
+	},
+	data() {
+		return {
+			activeIndex: '/home/about',
+			activeIndex2: '1',
+			navOpen:true,
+		}
+	},
+	methods:{
+		fromNavValfn(val){
+			this.activeIndex2=val;
+			this.navOpen=false;
+		}
+	}
 }
 </script>
+
+<style>
+	
+</style>
